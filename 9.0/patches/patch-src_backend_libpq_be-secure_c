@@ -1,0 +1,45 @@
+$OpenBSD$
+
+Work with modern LibreSSL.
+
+Index: src/backend/libpq/be-secure.c
+--- src/backend/libpq/be-secure.c.orig
++++ src/backend/libpq/be-secure.c
+@@ -324,27 +324,25 @@ secure_write(Port *port, void *ptr, size_t len)
+ 
+ 		if (ssl_renegotiation_limit && port->count > ssl_renegotiation_limit * 1024L)
+ 		{
++			int retries;
+ 			SSL_set_session_id_context(port->ssl, (void *) &SSL_context,
+ 									   sizeof(SSL_context));
+ 			if (SSL_renegotiate(port->ssl) <= 0)
+ 				ereport(COMMERROR,
+ 						(errcode(ERRCODE_PROTOCOL_VIOLATION),
+ 						 errmsg("SSL renegotiation failure")));
+-			if (SSL_do_handshake(port->ssl) <= 0)
++			for (retries = 0;; retries++)
++			{
++				if (SSL_do_handshake(port->ssl) > 0)
++					break;
+ 				ereport(COMMERROR,
+ 						(errcode(ERRCODE_PROTOCOL_VIOLATION),
+-						 errmsg("SSL renegotiation failure")));
+-			if (port->ssl->state != SSL_ST_OK)
+-				ereport(COMMERROR,
++						 errmsg("SSL renegotiation failure, retrying")));
++				if (retries >= 20)
++					ereport(FATAL,
+ 						(errcode(ERRCODE_PROTOCOL_VIOLATION),
+-						 errmsg("SSL failed to send renegotiation request")));
+-			port->ssl->state |= SSL_ST_ACCEPT;
+-			SSL_do_handshake(port->ssl);
+-			if (port->ssl->state != SSL_ST_OK)
+-				ereport(COMMERROR,
+-						(errcode(ERRCODE_PROTOCOL_VIOLATION),
+-						 errmsg("SSL renegotiation failure")));
+-			port->count = 0;
++						 errmsg("could not complete SSL handshake on renegotiation, too many failures")));
++			}
+ 		}
+ 
+ wloop:

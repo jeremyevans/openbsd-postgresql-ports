@@ -1,0 +1,15 @@
+$OpenBSD: patch-src_interfaces_ecpg_ecpglib_Makefile,v 1.1.1.1 2016/12/18 18:13:25 jeremy Exp $
+Index: src/interfaces/ecpg/ecpglib/Makefile
+--- src/interfaces/ecpg/ecpglib/Makefile.orig
++++ src/interfaces/ecpg/ecpglib/Makefile
+@@ -13,8 +13,8 @@ top_builddir = ../../../..
+ include $(top_builddir)/src/Makefile.global
+ 
+ NAME= ecpg
+-SO_MAJOR_VERSION= 5
+-SO_MINOR_VERSION= 2
++SO_MAJOR_VERSION= ${LIBecpg_MAJOR}
++SO_MINOR_VERSION= ${LIBecpg_MINOR}
+ DLTYPE= library
+ 
+ override CPPFLAGS := -DFRONTEND \
