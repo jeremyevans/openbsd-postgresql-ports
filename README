@@ -1,3 +1,21 @@
 These are ports for old versions of PostgreSQL, useful for testing old
 versions or possibly for pg_upgrade.  To use, clone this repository
 into /usr/ports/mystuff/databases/postgresql-old.
+
+Versions 8.2-9.0 must run with _postgresql as the database superuser,
+instead of the default of postgres.
+
+Here's some code to setup databases for all of these versions:
+
+  for x in 9.1 9.2 9.3 9.4 9.5 9.6 10 11 12; do
+    doas -u _postgresql /usr/local/bin/postgresql-$x/initdb -D /var/postgresql/data-$x -U postgres -E UTF8
+  done
+  for x in 8.2 8.3 8.4 9.0; do
+    doas -u _postgresql /usr/local/bin/postgresql-$x/initdb -D /var/postgresql/data-$x -E UTF8
+  done
+
+You'll want to go into postgresql.conf in each directory and change the
+port if you want to run versions in parallel.
+
+Note that older versions need kern.shminfo.shmmax increased, in addition to
+kern.seminfo.semmni and kern.seminfo.semmns.

@@ -1,0 +1,19 @@
+# $OpenBSD: Makefile,v 1.10 2019/07/12 20:43:59 sthen Exp $
+
+VERSION=	12.7
+
+SHARED_LIBS=	ecpg		7.10 \
+		ecpg_compat	4.10 \
+		pgtypes		4.9 \
+		pq		6.11
+
+pre-build:
+	${PRE_BUILD}
+
+post-build:
+	${POST_BUILD}
+
+post-install:
+	${POST_INSTALL}
+
+.include <bsd.port.mk>
