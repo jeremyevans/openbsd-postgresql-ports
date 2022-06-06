@@ -1,5 +1,3 @@
-# $OpenBSD: Makefile,v 1.3 2017/06/13 12:31:44 schwarze Exp $
-
 VERSION=	9.5.5
 REVISION=	4
 

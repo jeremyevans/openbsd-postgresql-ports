@@ -1,5 +1,3 @@
-# $OpenBSD: Makefile,v 1.10 2019/07/12 20:43:59 sthen Exp $
-
 VERSION=	11.9
 
 SHARED_LIBS=	ecpg		7.9 \

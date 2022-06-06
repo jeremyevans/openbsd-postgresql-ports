@@ -1,4 +1,3 @@
-@comment $OpenBSD: PLIST,v 1.1.1.1 2016/12/18 18:13:26 jeremy Exp $
 @option no-default-conflict
 @option is-branch
 @conflict postgresql-old->=${MAJOR_VERSION},<9.1

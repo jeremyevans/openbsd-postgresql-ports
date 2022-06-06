@@ -1,5 +1,3 @@
-# $OpenBSD: Makefile,v 1.10 2019/07/12 20:43:59 sthen Exp $
-
 COMMENT ?=	PostgreSQL RDBMS old version
 
 DISTNAME ?=	postgresql-${VERSION}

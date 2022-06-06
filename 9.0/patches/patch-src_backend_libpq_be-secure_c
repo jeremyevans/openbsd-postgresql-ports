@@ -1,5 +1,3 @@
-$OpenBSD$
-
 Work with modern LibreSSL.
 
 Index: src/backend/libpq/be-secure.c

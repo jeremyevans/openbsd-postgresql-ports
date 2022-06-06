@@ -1,5 +1,3 @@
-# $OpenBSD: Makefile,v 1.3 2017/06/13 12:31:44 schwarze Exp $
-
 VERSION=	8.4.22
 
 SHARED_LIBS=	ecpg		7.1 \

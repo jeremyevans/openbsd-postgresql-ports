@@ -1,5 +1,3 @@
-# $OpenBSD: Makefile,v 1.6 2018/09/06 19:10:53 tb Exp $
-
 VERSION=	9.6.6
 REVISION=	4
 
