@@ -1,6 +1,7 @@
 @option no-default-conflict
 @option is-branch
 @conflict postgresql-old->=11,<12
+@rcscript ${RCDIR}/postgresql_${MAJOR_VERSION}
 bin/${POSTGRESQL_DIR}/
 @bin bin/${POSTGRESQL_DIR}/clusterdb
 @bin bin/${POSTGRESQL_DIR}/createdb
