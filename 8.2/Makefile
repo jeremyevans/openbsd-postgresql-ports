@@ -1,4 +1,5 @@
 VERSION=	8.2.23
+REVISION=	0
 
 SHARED_LIBS=	ecpg		6.0 \
 		ecpg_compat	3.0 \

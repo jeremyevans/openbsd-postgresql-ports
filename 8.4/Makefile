@@ -1,4 +1,5 @@
 VERSION=	8.4.22
+REVISION=	0
 
 SHARED_LIBS=	ecpg		7.1 \
 		ecpg_compat	4.1 \

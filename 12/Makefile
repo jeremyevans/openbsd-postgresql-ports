@@ -1,5 +1,5 @@
 VERSION=	12.7
-REVISION=	0
+REVISION=	1
 
 SHARED_LIBS=	ecpg		7.10 \
 		ecpg_compat	4.10 \
