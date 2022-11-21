@@ -7,7 +7,7 @@ instead of the default of postgres.
 
 Here's some code to setup databases for all of these versions:
 
-  for x in 9.1 9.2 9.3 9.4 9.5 9.6 10 11 12; do
+  for x in 9.1 9.2 9.3 9.4 9.5 9.6 10 11 12 13; do
     doas -u _postgresql /usr/local/bin/postgresql-$x/initdb -D /var/postgresql/data-$x -U postgres -E UTF8
   done
   for x in 8.2 8.3 8.4 9.0; do
