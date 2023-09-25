@@ -12,7 +12,7 @@ PERMIT_PACKAGE ?=	Yes
 
 WANTLIB ?= c crypto curses m perl readline ssl xml2 z
 
-MASTER_SITES ?=	https://ftp.postgresql.org/pub/source/v${VERSION}/ \
+SITES ?=	https://ftp.postgresql.org/pub/source/v${VERSION}/ \
 		ftp://ftp.postgresql.org/pub/source/v${VERSION}/
 
 MAKE_FILE ?=	GNUmakefile
