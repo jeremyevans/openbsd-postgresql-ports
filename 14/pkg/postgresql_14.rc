@@ -1,0 +1,28 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/${POSTGRESQL_DIR}/pg_ctl"
+daemon_flags="-D ${DATA_DIR} -w -l /var/postgresql/logfile"
+daemon_user="_postgresql"
+
+. /etc/rc.d/rc.subr
+
+rc_usercheck=NO
+
+rc_check() {
+	rc_exec "${daemon} status ${daemon_flags}"
+}
+
+rc_reload() {
+	rc_exec "${daemon} reload ${daemon_flags}"
+}
+
+rc_start() {
+	rc_exec "${daemon} start ${daemon_flags}"
+}
+
+rc_stop() {
+	rc_exec "${daemon} stop ${daemon_flags} -m fast" || \
+		rc_exec "${daemon} stop ${daemon_flags} -m immediate"
+}
+
+rc_cmd $1
