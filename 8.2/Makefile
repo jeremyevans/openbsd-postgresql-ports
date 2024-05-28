@@ -1,10 +1,12 @@
 VERSION=	8.2.23
-REVISION=	0
+REVISION=	1
 
 SHARED_LIBS=	ecpg		6.0 \
 		ecpg_compat	3.0 \
 		pgtypes		2.0 \
 		pq		6.0
+
+EXTRA_CONFIGURE_ARGS =	--without-openssl
 
 pre-build:
 	${PRE_BUILD}

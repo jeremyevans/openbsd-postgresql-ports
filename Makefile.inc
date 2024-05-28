@@ -49,7 +49,8 @@ CONFIGURE_ARGS ?=	--with-openssl=/usr \
 			--with-system-tzdata="/usr/share/zoneinfo" \
 			--with-openssl \
 			--with-libxml \
-			--disable-thread-safety
+			--disable-thread-safety \
+			${EXTRA_CONFIGURE_ARGS}
 
 MODGNU_CONFIG_GUESS_DIRS ?=	${WRKSRC}/config
 
